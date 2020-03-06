@@ -533,6 +533,26 @@ func (s *RepositoriesService) DisableVulnerabilityAlerts(ctx context.Context, ow
 	return s.client.Do(ctx, req, nil)
 }
 
+// GetVulnerabilityAlerts checks if vulnerability alerts are enabled for a repository.
+//
+// GitHub API docs: https://developer.github.com/v3/repos/#check-if-vulnerability-alerts-are-enabled-for-a-repository
+func (s *RepositoriesService) GetVulnerabilityAlerts(ctx context.Context, owner, repository string) (bool, *Response, error) {
+	u := fmt.Sprintf("repos/%v/%v/vulnerability-alerts", owner, repository)
+
+	req, err := s.client.NewRequest("GET", u, nil)
+	if err != nil {
+		return false, nil, err
+	}
+
+	// TODO: remove custom Accept header when this API fully launches
+	req.Header.Set("Accept", mediaTypeRequiredVulnerabilityAlertsPreview)
+
+	resp, err := s.client.Do(ctx, req, nil)
+	vulnerabilityAlertsEnabled, err := parseBoolResponse(err)
+
+	return vulnerabilityAlertsEnabled, resp, err
+}
+
 // EnableAutomatedSecurityFixes enables the automated security fixes for a repository.
 //
 // GitHub API docs: https://developer.github.com/v3/repos/#enable-automated-security-fixes
