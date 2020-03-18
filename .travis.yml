@@ -25,8 +25,8 @@ matrix:
   allow_failures:
   - go: tip
   include:
-  - name: "make lint"
-    script: make lint
+  # - name: "make lint"
+  #   script: make lint
   - name: "make test"
     script: make test
   - name: "make website-lint"
