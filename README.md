@@ -112,4 +112,4 @@ knows that you're doing this just to be nice. You can also export `GITHUB_TEST_C
 Additionally the user exported as `GITHUB_TEST_USER` should have a public email address configured in their profile; this should be exported
 as `GITHUB_TEST_USER_EMAIL` and the Github name exported as `GITHUB_TEST_USER_NAME` (this could be different to your GitHub login).
 
-Finally, export the ID of the release created in the template repository as `GITHUB_TEMPLATE_REPOSITORY_RELEASE_ID`
+Finally, export the ID of the release created in the template repository as `GITHUB_TEMPLATE_REPOSITORY_RELEASE_ID`.
