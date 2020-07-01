@@ -78,11 +78,12 @@ func (c *Config) Clients() (interface{}, error) {
 		owner.name = user.GetLogin()
 	} else {
 		remoteOrg, _, err := owner.v3client.Organizations.Get(ctx, owner.name)
-		if err == nil {
-			if remoteOrg != nil {
-				owner.id = remoteOrg.GetID()
-				owner.IsOrganization = true
-			}
+		if err != nil {
+			return nil, err
+		}
+		if remoteOrg != nil {
+			owner.id = remoteOrg.GetID()
+			owner.IsOrganization = true
 		}
 	}
 	return &owner, nil
