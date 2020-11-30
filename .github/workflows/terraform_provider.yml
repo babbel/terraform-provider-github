@@ -3,6 +3,7 @@ name: Terraform Provider Checks
 on:
   push:
     branches:
+      - pre-release
       - master
     tags:
     - 'v*'
