@@ -851,7 +851,7 @@ resource "github_repository" "foo" {
   allow_rebase_merge = false
   has_downloads      = true
   auto_init          = true
-  default_branch     = "master"
+  default_branch     = "main"
 }
 `, randString, randString)
 }
@@ -897,7 +897,7 @@ resource "github_repository" "foo" {
   allow_rebase_merge = false
   has_downloads = true
   auto_init = true
-  default_branch = "master"
+  default_branch = "main"
 }
 `, randString, randString)
 }
